@@ -417,16 +417,16 @@ class SmartSpeedSimulation(ShowBase):
         
         # Publish location (simulated GPS)
         loc_result = self.mqtt_client.publish_location(x / 1000.0, y / 1000.0)
-        print(f"[MQTT] 📍 Location published: {loc_result} (lat: {x/1000.0:.4f}, lon: {y/1000.0:.4f})")
+        print(f"[MQTT] [1] Location published: {loc_result} (lat: {x/1000.0:.4f}, lon: {y/1000.0:.4f})")
         
         # Publish speed
         speed_limit = self.zone_manager.get_speed_limit(x, y)
         speed_result = self.mqtt_client.publish_speed(speed, speed_limit)
-        print(f"[MQTT] 🚗 Speed published: {speed_result} (speed: {speed:.1f} km/h, limit: {speed_limit:.0f} km/h)")
+        print(f"[MQTT] [2] Speed published: {speed_result} (speed: {speed:.1f} km/h, limit: {speed_limit:.0f} km/h)")
         
         # Publish state
         state_result = self.mqtt_client.publish_state(state, state_color)
-        print(f"[MQTT] 🎛️  State published: {state_result} (state: {state})")
+        print(f"[MQTT] [3]  State published: {state_result} (state: {state})")
         
         # Summary
         if loc_result and speed_result and state_result:
